@@ -1,13 +1,19 @@
-function testNoteHasIdOfOne() {
-  var note = new Note();
-  assert.isTrue(note.id === 1);
+function testNoteTakesTextOnInstantiation() {
+  var note = new Note("My first Note");
 }
 
-function testNote() {
-  var list = new List();
-  list.addNote("My first Note");
-  assert.isTrue(list.notes[0].returnText("My first Note"));
+function testNoteStoresNoteInPropertyCalledText() {
+  var note = new Note("My second Note");
+  assert.isTrue(note.text === "My second Note");
 }
 
-testNoteHasIdOfOne();
-testNote()
+function testNoteReturnsTheNoteText() {
+  var note = new Note("My third Note");
+  assert.isTrue(note.returnNoteText() === "My third Note");
+}
+
+console.log('here');
+console.log(document);
+testNoteTakesTextOnInstantiation();
+testNoteStoresNoteInPropertyCalledText();
+testNoteReturnsTheNoteText();
