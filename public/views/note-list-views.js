@@ -5,7 +5,7 @@
 
   NoteListView.prototype.returnHTML = function() {
     var noteListMap = this.noteList.list.map(function(listItem) {
-      return ("<li><div>" + listItem.text + "</div></li>");
+      return ("<li><div>" + listItem.text.slice(0,20) + "</div></li>");
     });
     return ("<ul>" + noteListMap.join("") + "</ul>");
   };
