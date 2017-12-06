@@ -3,8 +3,8 @@
     this.list = [];
 
     NoteList.prototype.new = function(string) {
-      var note = new Note(string);
-
+      var noteId = (this.list.length);
+      var note = new Note(string, noteId);
       this.list.push(note);
     };
 
