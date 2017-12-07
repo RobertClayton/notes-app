@@ -17,7 +17,7 @@ function testNoteListControllerChangesHTML() {
   noteController.listView();
   noteController.getHTML();
 
-  assert.isTrue(document.getElementById("app").innerHTML == ('<ul><li><div>Favourite food</div></li></ul>'));
+  assert.isTrue(document.getElementById("app").innerHTML == (`<ul><li><div><a href="#id0">Favourite food</a></div></li></ul>`));
 }
 
 testNoteListControllerIncludesString();
