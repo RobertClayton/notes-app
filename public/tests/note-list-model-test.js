@@ -1,4 +1,3 @@
-
 function testNoteListCanStoreAnArrayOfNotes() {
   var note = new Note("My Note");
   var noteList = new NoteList();

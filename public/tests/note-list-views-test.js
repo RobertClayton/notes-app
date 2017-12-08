@@ -1,4 +1,3 @@
-/*jshint esversion: 6 */
 function testNoteListViewCanTakeNoteList() {
   var noteList = new NoteList();
   var noteListView = new NoteListView(noteList);
@@ -9,7 +8,7 @@ function testNoteListViewCanReturnHTMLString() {
   noteList.new('stringy');
   var noteListView = new NoteListView(noteList);
   description = 'Note List View returns a string of HTML';
-  assert.isTrue(description, noteListView.returnHTML() == `<ul><li><div><a href="#notes/id0">stringy</a></div></li></ul>`);
+  assert.isTrue(description, noteListView.returnHTML() == `<ul><li><div><a id="#notes/id0" href="#notes/id0">stringy...</a></div></li></ul>`);
 }
 
 function testNoteListViewCanHandleNoNotes() {
@@ -24,7 +23,7 @@ function testNoteListViewCanHandleManyNotes() {
   noteList.new('stringy');
   var noteListView = new NoteListView(noteList);
   description = 'Note List View returns a string of HTML - with multiple notes';
-  assert.isTrue(description, noteListView.returnHTML() == `<ul><li><div><a href="#notes/id0">stringy</a></div></li><li><div><a href="#notes/id1">stringy</a></div></li></ul>`);
+  assert.isTrue(description, noteListView.returnHTML() == `<ul><li><div><a id="#notes/id0" href="#notes/id0">stringy...</a></div></li><li><div><a id="#notes/id1" href="#notes/id1">stringy...</a></div></li></ul>`);
 }
 
 function testNoteListViewShowsFirst20Characters() {
@@ -32,7 +31,7 @@ function testNoteListViewShowsFirst20Characters() {
   noteList.new('aaaaaaaaaaaaaaaaaaaaxxxxxxxx');
   var noteListView = new NoteListView(noteList);
   description = 'Note List View shows only the first 20 characters of a note';
-  assert.isTrue(description, noteListView.returnHTML() == `<ul><li><div><a href="#notes/id0">aaaaaaaaaaaaaaaaaaaa</a></div></li></ul>`);
+  assert.isTrue(description, noteListView.returnHTML() == `<ul><li><div><a id="#notes/id0" href="#notes/id0">aaaaaaaaaaaaaaaaaaaa...</a></div></li></ul>`);
 }
 
 function testNoteListViewHasURLForEachNote() {
@@ -40,7 +39,7 @@ function testNoteListViewHasURLForEachNote() {
   noteList.new('stringy');
   var noteListView = new NoteListView(noteList);
   description = 'Note List View has a unique URL for each note';
-  // assert.isTrue(description, window.location.href.includes("#notes/id0"));
+  assert.isTrue(description, document.getElementById("#notes/id0").href.includes("#notes/id0"));
 }
 
 
