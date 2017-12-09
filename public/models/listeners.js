@@ -11,15 +11,19 @@ controller.listView();
 controller.getHTML();
 
 
-hashChanged = window.addEventListener("hashchange", callbackHashChange);
-submittedNote = window.addEventListener("submit", callbackSubmiteNewNote);
 
 
 function callbackHashChange() {
-  console.log('1', event);
+  // console.log('1', event);
   controller.hashChangeListener();
 }
 function callbackSubmiteNewNote() {
-  console.log('2', event);
+  // console.log('2', event.srcElement["0"].value);
+  controller.newNote(`${event.srcElement["0"].value}`);
+  controller.listView();
+  controller.getHTML();
   event.preventDefault();
 }
+
+hashChanged = window.addEventListener("hashchange", callbackHashChange);
+submittedNote = window.addEventListener("submit", callbackSubmiteNewNote);
