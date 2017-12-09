@@ -10,8 +10,16 @@ controller.newNote('Favourite Book7: The Deathly Hallows');
 controller.listView();
 controller.getHTML();
 
-function callback() {
+
+hashChanged = window.addEventListener("hashchange", callbackHashChange);
+submittedNote = window.addEventListener("submit", callbackSubmiteNewNote);
+
+
+function callbackHashChange() {
+  console.log('1', event);
   controller.hashChangeListener();
 }
-
-window.addEventListener("hashchange", callback);
+function callbackSubmiteNewNote() {
+  console.log('2', event);
+  event.preventDefault();
+}
