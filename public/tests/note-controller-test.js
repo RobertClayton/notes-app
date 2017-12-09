@@ -1,24 +1,30 @@
-function testNoteListControllerIncludesString() {
-  var noteList = new NoteList();
-  var noteController = new NoteController(noteList);
-
-  noteController.newNote('This is the string');
+function doBeforeEach() {
+  this.noteList = new NoteList();
+  this.noteController = new NoteController(noteList);
+  noteController.newNote('Favourite Book and it has text');
   noteController.listView();
   noteController.getHTML();
+}
+
+function testNoteListControllerIncludesString() {
+  doBeforeEach();
   description = 'Note List Controller includes string';
-  assert.isTrue(description, document.getElementById("app").innerHTML.includes('This is the string'));
+  assert.isTrue(description, document.getElementById("app").innerHTML.includes('Favourite Book and i'));
 }
 
 function testNoteListControllerChangesHTML() {
-  var noteList = new NoteList();
-  var noteController = new NoteController(noteList);
-
-  noteController.newNote('Favourite food');
-  noteController.listView();
-  noteController.getHTML();
+  doBeforeEach();
   description = 'Note List Controller Changes HTML';
-  assert.isTrue(description, document.getElementById("app").innerHTML == (`<ul><li><div><a id="#notes/id0" href="#notes/id0">Favourite food...</a></div></li></ul>`));
+  assert.isTrue(description, document.getElementById("app").innerHTML == (`<ul><li><div><a id="#notes/id0" href="#notes/id0">Favourite Book and i...</a></div></li></ul>`));
+}
+
+function testNoteListControllerDisplaysTheTextOfClickedNote() {
+  doBeforeEach();
+  description = 'Note List Controller Changes NoteText';
+  // document.getElementById("#notes/id0").click();
+  // assert.isTrue(description, document.getElementById("noteText").innerHTML == 'Favourite Book1: The Philophers Stone');
 }
 
 testNoteListControllerIncludesString();
 testNoteListControllerChangesHTML();
+testNoteListControllerDisplaysTheTextOfClickedNote();

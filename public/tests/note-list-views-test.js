@@ -1,8 +1,3 @@
-function testNoteListViewCanTakeNoteList() {
-  var noteList = new NoteList();
-  var noteListView = new NoteListView(noteList);
-}
-
 function testNoteListViewCanReturnHTMLString() {
   var noteList = new NoteList();
   noteList.new('stringy');
@@ -37,14 +32,13 @@ function testNoteListViewShowsFirst20Characters() {
 function testNoteListViewHasURLForEachNote() {
   var noteList = new NoteList();
   noteList.new('stringy');
+  noteList.new('stringyTwo');
   var noteListView = new NoteListView(noteList);
+  var returnedHTMLText = noteListView.returnHTML();
   description = 'Note List View has a unique URL for each note';
-  assert.isTrue(description, document.getElementById("#notes/id0").href.includes("#notes/id0"));
+  assert.isTrue(description, returnedHTMLText.includes(`href="#notes/id0"`, `href="#notes/id1"`));
 }
 
-
-
-testNoteListViewCanTakeNoteList();
 testNoteListViewCanReturnHTMLString();
 testNoteListViewCanHandleNoNotes();
 testNoteListViewCanHandleManyNotes();
